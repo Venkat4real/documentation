@@ -1314,22 +1314,22 @@ test.describe("removeVersionLinkTitle()", () => {
     const titleWithMinor = "(in Qiskit v1.3.4)";
     const link1 = createLinkNode(titleWithMinor);
     removeVersionLinkTitle(link1);
-    expect(link1).toEqual(link1);
+    expect(link1.title).toEqual(titleWithMinor);
 
     const titleWithoutParenthesis = "in Qiskit v1.3";
     const link2 = createLinkNode(titleWithoutParenthesis);
     removeVersionLinkTitle(link2);
-    expect(link2).toEqual(link2);
+    expect(link2.title).toEqual(titleWithoutParenthesis);
 
     const standardTitle = "My title";
     const link3 = createLinkNode(standardTitle);
     removeVersionLinkTitle(link3);
-    expect(link3).toEqual(link3);
+    expect(link3.title).toEqual(standardTitle);
   });
 
   test("Link with no title", () => {
     const link = createLinkNode();
     removeVersionLinkTitle(link);
-    expect(link).toEqual(link);
+    expect(link.title).toBeUndefined();
   });
 });
